@@ -1,0 +1,15 @@
+name: fruits_env
+channels:
+  - intel
+  - conda-forge
+dependencies:
+  - python=3.9
+  - codecov
+  - sqlalchemy
+  - scikit-learn
+  - pandas
+  - pip
+  - pip:
+    - pyyaml
+    - munch
+    - pymysql
