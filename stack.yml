@@ -3,14 +3,12 @@ version: '3.7'
 services:
 
   db:
-    #image: mysql
     build:
       context: .
       dockerfile: Dockerfile
     container_name: fruits_db_ctnr
-    #command: --default-authentication-plugin=mysql_native_password
     restart: always
-    ports: 
+    ports:
       - 23306:3306
     environment:
       MYSQL_ROOT_PASSWORD: fruits123
@@ -21,19 +19,16 @@ services:
     volumes:
       - ./schemas:/var/lib/mysql:rw
       - ./fruits:/tmp/fruits
+      - ./docker/mysql/scripts:/docker-entrypoint-initdb.d
     networks:
       mysql_network:
         aliases:
           - mysql_host
 volumes:
   schemas: {}
+  fruits: {}
+
 networks:
   mysql_network:
     name: mysql_net
     driver: bridge
-
-  # adminer:
-  #   image: adminer
-  #   restart: always
-  #   ports:
-  #     - 8080:8080

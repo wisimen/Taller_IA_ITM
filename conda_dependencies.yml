@@ -2,13 +2,19 @@ name: fruits_env
 channels:
   - intel
   - conda-forge
+  - pytorch
 dependencies:
   - python=3.9
   - codecov
   - sqlalchemy
-  - scikit-learn
+  - pytorch
+  - torchvision
+  - torchaudio
+  - cudatoolkit=11.3
+  - tensorboard
   - pandas
   - pip
+  - matplotlib
   - pip:
     - pyyaml
     - munch
