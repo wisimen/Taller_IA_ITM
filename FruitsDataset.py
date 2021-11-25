@@ -2,7 +2,7 @@ from torch.utils.data.dataset import Dataset
 from torchvision import transforms
 import numpy as np
 from PIL import Image
-
+import torch
 class FruitsDataset(Dataset):
     printSize = True
     def __init__(self, pd_dataframe):
@@ -17,7 +17,7 @@ class FruitsDataset(Dataset):
         # First column contains the image paths
         self.image_arr = np.asarray(self.data_info.iloc[:, 0])
         # Second column is the labels
-        self.label_arr = np.asarray(self.data_info.iloc[:, 1])
+        self.label_arr = torch.tensor(list(self.data_info.iloc[:, 1]))
         # Third column is for an operation indicator
         self.operation_arr = np.asarray([False]*self.data_info.count())
         # Calculate len
@@ -37,7 +37,7 @@ class FruitsDataset(Dataset):
             print(img_as_tensor.shape)
             self.printSize = False
         # Get label of the image based on the cropped pandas column
-        single_image_label = self.label_arr[index]
+        single_image_label = torch.tensor(self.label_arr[index])
         return (img_as_tensor, single_image_label)
 
     def __len__(self):

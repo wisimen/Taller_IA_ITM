@@ -11,7 +11,7 @@ class FruitsNeuralNetwork(nn.Module):
         self.conv2 = nn.Conv2d(in_channels=6, out_channels=50, kernel_size=5)
         self.fc1 = nn.Linear(24200, 24200)
         self.fc2 = nn.Linear(24200, 17424)
-        self.fc3 = nn.Linear(17424, 132)
+        self.fc3 = nn.Linear(17424, 131)
 
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))
