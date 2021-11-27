@@ -38,6 +38,8 @@ class DbConnection:
             ]).join(self.tipo_frutas).where(self.frutas.columns.is_test == is_test)
         results = self.connection.execute(query).fetchall()
         df = pd.DataFrame(results)
+        # if(is_test):
+        #     df = df.head(100)
         return df
 
     def get_labels(self):
